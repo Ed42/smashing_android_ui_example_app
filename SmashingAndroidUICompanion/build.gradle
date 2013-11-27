@@ -1,0 +1,44 @@
+apply plugin: 'android'
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:+'
+	}
+}
+
+repositories {
+	// requires an entry in /etc/hosts
+	def server = 'nexus-server'
+	maven {
+		url "http://${server}:8081/nexus/content/groups/public"
+	}
+	maven {
+		url "http://${server}:8081/nexus/content/repositories/android/"
+	}
+}
+
+dependencies {
+
+	// Manually deployed to nexus repo (see above)
+	compile 'android.support:compatibility-v4:19'
+	compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+	compile 'com.viewpagerindicator:library:2.4.1@aar'
+
+	// Downloaded from https://developers.google.com/analytics/devguides/collection/android/resources,
+	// the zip file extracted and the jar file manually deployed to nexus repo
+	compile 'com.google.android:analytics:3.0.1'
+}
+
+android {
+	compileSdkVersion 19
+	buildToolsVersion '17'
+}
+
+if (hasProperty("xlint")) {
+	tasks.withType(Compile) {
+		options.compilerArgs << "-Xlint"
+	}
+}

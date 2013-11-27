@@ -56,3 +56,17 @@ local.properties
 ehthumbs.db
 Icon?
 Thumbs.db
+# android studio
+gen-*
+out
+.idea
+*.iml
+
+# gradle
+.gradle
+build
+
+# misc
+.*.swp
+local.properties
+tmp

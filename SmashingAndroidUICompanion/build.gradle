@@ -27,9 +27,8 @@ dependencies {
 	compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
 	compile 'com.viewpagerindicator:library:2.4.1@aar'
 
-	// Downloaded from https://developers.google.com/analytics/devguides/collection/android/resources,
-	// the zip file extracted and the jar file manually deployed to nexus repo
-	compile 'com.google.android:analytics:3.0.1'
+	// uses the legacy analytics which I can't find anywhere
+	compile files('libs/libGoogleAnalytics.jar')
 }
 
 android {
